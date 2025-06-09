@@ -225,6 +225,15 @@ select.btn:hover {
         
 		font-size: 24px;
         padding: 15px;
+		
+		cursor: pointer;
+        -webkit-user-select: none;Add commentMore actions
+        user-select: none;
+    }
+	
+	.display[contenteditable="true"] {
+        
+		outline: 2px solid #00bcd4;
     }
     
     .buttons {
@@ -244,7 +253,8 @@ select.btn:hover {
         font-size: 14px;
 		
 		text-align: center;
-        text-align-last: center; /* Per allineare il testo selezionato */
+        text-align-last: center;
+        -moz-text-align-last: center; /* Per Firefox */
     }
 	
 	select.btn option {
