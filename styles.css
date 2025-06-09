@@ -292,3 +292,15 @@ select.btn:hover {
     padding: 0;
     margin: 0;
 }
+
+#keyboard-input {
+    
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+    pointer-events: none;
+}
