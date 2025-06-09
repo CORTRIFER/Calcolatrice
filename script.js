@@ -484,71 +484,117 @@ document.addEventListener('keydown', function(event) {
 });
 
 
-const hiddenInput = document.createElement('input');
+// Input nascosto per la tastiera
+const keyboardInput = document.getElementById('keyboard-input') || document.createElement('input');
 
-hiddenInput.type = 'text';
+keyboardInput.type = 'text';
+document.body.appendChild(keyboardInput);
 
-hiddenInput.style.position = 'absolute';
+// Variabili per il buffer di input
+let inputBuffer = '';
+let lastKeyTime = 0;
 
-hiddenInput.style.opacity = '0';
-hiddenInput.style.height = '0';
-hiddenInput.style.width = '0';
-
-hiddenInput.style.border = 'none';
-
-document.body.appendChild(hiddenInput);
-
-// Gestione click sul display
-display.addEventListener('click', function() {
+// Attiva la tastiera al click sul display
+display.addEventListener('click', () => {
     
 	if ('ontouchstart' in window) {
-        
-		hiddenInput.focus();
-        
-        // Opzionale: imposta inputmode per tastiera completa
-        hiddenInput.removeAttribute('inputmode');
+    
+		keyboardInput.focus();
     }
 });
 
-// Gestione input da tastiera
-hiddenInput.addEventListener('input', function(e) {
+// Gestione completa della tastiera
+keyboardInput.addEventListener('keydown', function(e) {
     
-	// Prendi l'ultimo carattere inserito (per gestire meglio input rapidi)
-    const lastChar = this.value.slice(-1);
+	e.preventDefault();
+    const currentTime = Date.now();
+    const key = e.key.toLowerCase();
     
-    // Se è un carattere valido, aggiungilo al display
-    if (/[0-9+\-*\/^().=]/.test(lastChar)) {
+    // Reset buffer se è passato troppo tempo
+    if (currentTime - lastKeyTime > 1000) inputBuffer = '';
+    lastKeyTime = currentTime;
+    
+    // Aggiungi al buffer
+    inputBuffer += key;
+    
+    // Gestione comandi speciali
+    switch(true) {
         
-		appendToDisplay(lastChar);
+		case key === 'enter' || key === '=':
+            
+			calculateResult();
+            inputBuffer = '';
+            return;
+            
+        case key === 'backspace':
+            
+			const current = display.innerText;
+            
+			display.innerText = current.length > 1 ? current.slice(0, -1) : '0';
+            inputBuffer = '';
+            return;
+            
+        case key === 'escape' || (key === 'c' && inputBuffer === 'c'):
+            
+			clearDisplay();
+            inputBuffer = '';
+            return;
+            
+        case inputBuffer.endsWith('sin'):
+            
+			appendToDisplay('sin(');
+            inputBuffer = '';
+            return;
+            
+        case inputBuffer.endsWith('cos'):
+            
+			appendToDisplay('cos(');
+            inputBuffer = '';
+            return;
+            
+        case inputBuffer.endsWith('tan'):
+            
+			appendToDisplay('tan(');
+            inputBuffer = '';
+            return;
+            
+        case inputBuffer.endsWith('log'):
+            
+			customLog(); // Usa la funzione esistente
+            inputBuffer = '';
+            return;
+            
+        case inputBuffer.endsWith('sqrt'):
+            
+			appendToDisplay('√(');
+            inputBuffer = '';
+            return;
+            
+        case inputBuffer.endsWith('pow'):
+            
+			customPower(); // Usa la funzione esistente
+            inputBuffer = '';
+            return;
+            
+        case inputBuffer.endsWith('ntf'):
+            
+			convertToFraction();
+            inputBuffer = '';
+            return;
+            
+        case ['0','1','2','3','4','5','6','7','8','9','+','-','*','/','(',')','.', '^'].includes(key):
+            
+			appendToDisplay(key);
+            inputBuffer = '';
+            return;
     }
-    
-    // Pulisci l'input nascosto
-    this.value = '';
 });
 
-hiddenInput.addEventListener('keydown', function(e) {
+// Mantieni il focus sulla tastiera
+keyboardInput.addEventListener('blur', function() {
     
-	if (e.key === 'Enter') {
-        
-		e.preventDefault();
-        calculateResult();
-    } 
-	else if (e.key === 'Backspace') {
-        
-		e.preventDefault();
-        const current = display.innerText;
-        display.innerText = current.length > 1 ? current.slice(0, -1) : '0';
-    } 
-	else if (e.key.toLowerCase() === 'c' || e.key === 'Escape') {
-        
-		e.preventDefault();
-        clearDisplay();
-    }
+	if ('ontouchstart' in window && document.activeElement !== display) {
     
-    // Previeni l'input diretto nel campo nascosto
-    if (/[0-9+\-*\/^().=]/.test(e.key)) {
-        
-		e.preventDefault();
-        appendToDisplay(e.key);
+		setTimeout(() => keyboardInput.focus(), 100);
     }
 });
