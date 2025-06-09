@@ -484,26 +484,71 @@ document.addEventListener('keydown', function(event) {
 });
 
 
-// Attiva la tastiera numerica su mobile
+const hiddenInput = document.createElement('input');
+
+hiddenInput.type = 'text';
+
+hiddenInput.style.position = 'absolute';
+
+hiddenInput.style.opacity = '0';
+hiddenInput.style.height = '0';
+hiddenInput.style.width = '0';
+
+hiddenInput.style.border = 'none';
+
+document.body.appendChild(hiddenInput);
+
+// Gestione click sul display
 display.addEventListener('click', function() {
     
-	if ('ontouchstart' in window) { // Solo per dispositivi touch
+	if ('ontouchstart' in window) {
         
-		this.setAttribute('contenteditable', 'true');
-        this.focus();
+		hiddenInput.focus();
         
-        // Rimuovi contenteditable dopo che la tastiera è apparsa
-        setTimeout(() => {
-            
-			this.removeAttribute('contenteditable');
-			
-        }, 100);
+        // Opzionale: imposta inputmode per tastiera completa
+        hiddenInput.removeAttribute('inputmode');
     }
 });
 
-// Previeni l'input diretto (vogliamo solo la tastiera)
-display.addEventListener('input', function(e) {
+// Gestione input da tastiera
+hiddenInput.addEventListener('input', function(e) {
     
-	e.preventDefault();
-    this.innerText = '0';
+	// Prendi l'ultimo carattere inserito (per gestire meglio input rapidi)
+    const lastChar = this.value.slice(-1);
+    
+    // Se è un carattere valido, aggiungilo al display
+    if (/[0-9+\-*\/^().=]/.test(lastChar)) {
+        
+		appendToDisplay(lastChar);
+    }
+    
+    // Pulisci l'input nascosto
+    this.value = '';
+});
+
+hiddenInput.addEventListener('keydown', function(e) {
+    
+	if (e.key === 'Enter') {
+        
+		e.preventDefault();
+        calculateResult();
+    } 
+	else if (e.key === 'Backspace') {
+        
+		e.preventDefault();
+        const current = display.innerText;
+        display.innerText = current.length > 1 ? current.slice(0, -1) : '0';
+    } 
+	else if (e.key.toLowerCase() === 'c' || e.key === 'Escape') {
+        
+		e.preventDefault();
+        clearDisplay();
+    }
+    
+    // Previeni l'input diretto nel campo nascosto
+    if (/[0-9+\-*\/^().=]/.test(e.key)) {
+        
+		e.preventDefault();
+        appendToDisplay(e.key);
+    }
 });
