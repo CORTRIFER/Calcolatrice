@@ -206,49 +206,45 @@ select.btn:hover {
 /* Media queries per dispositivi mobili */
 @media (max-width: 600px) {
     
-    body {
-        height: auto;
+	body {
+        
+		height: auto;
         min-height: 100vh;
         padding: 10px;
         align-items: flex-start;
     }
     
     .calculator {
-        width: 100%;
+        
+		width: 100%;
         max-width: 100%;
         padding: 15px;
     }
     
     .display {
-        font-size: 24px;
-        padding: 15px;
-		
-		cursor: pointer;
-        -webkit-user-select: none;
-        user-select: none;
-    }
-	
-	.display[contenteditable="true"] {
         
-		outline: 2px solid #00bcd4;
+		font-size: 24px;
+        padding: 15px;
     }
     
     .buttons {
-        gap: 8px;
+        
+		gap: 8px;
     }
     
     .btn {
-        padding: 10px;
+        
+		padding: 10px;
         font-size: 14px;
     }
     
     select.btn {
-        padding: 10px;
+        
+		padding: 10px;
         font-size: 14px;
 		
 		text-align: center;
-        text-align-last: center;
-        -moz-text-align-last: center; /* Per Firefox */
+        text-align-last: center; /* Per allineare il testo selezionato */
     }
 	
 	select.btn option {
@@ -264,43 +260,22 @@ select.btn:hover {
     
     /* Riduci il padding per i pulsanti speciali */
     .btn-special, .n-to-f, .operator {
-        padding: 10px;
+        
+		padding: 10px;
         font-size: 14px;
     }
     
     /* Pulsante di conversione più compatto */
     .convert {
-        padding: 10px;
+        
+		padding: 10px;
         font-size: 14px;
     }
     
     /* Pulsante di cancellazione più compatto */
     .btn-clear {
-        padding: 10px;
+        
+		padding: 10px;
         font-size: 14px;
     }
-}
-
-
-#hidden-input {
-    
-	position: absolute;
-    opacity: 0;
-    height: 0;
-    width: 0;
-    border: none;
-    padding: 0;
-    margin: 0;
-}
-
-#keyboard-input {
-    
-    position: absolute;
-    opacity: 0;
-    height: 0;
-    width: 0;
-    border: none;
-    padding: 0;
-    margin: 0;
-    pointer-events: none;
 }
