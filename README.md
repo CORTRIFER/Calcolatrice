@@ -21,7 +21,7 @@ Calcolatrice scientifica con funzioni, supporto per tastiera e design responsive
 - **Feedback visivo** per operazioni e errori
 - **Menu a tendina** per funzioni trigonometriche
 
-## ⌨️ Comandi da Tastiera
+## ⌨️ Comandi da Tastiera(Per Desktop only)
 | Tasto/Tasti          | Azione                           |
 |----------------------|----------------------------------|
 | `0-9`, `.`         	 | Inserimento numeri               |
