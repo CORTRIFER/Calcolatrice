@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html lang="it">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+	<title>Istruzioni Calcolatrice Scientifica</title>
+    <link rel="stylesheet" href="styles.css">
+    
+	<style>
+	
+		body {
+            
+			margin: 0;
+            padding: 20px;
+            background-color: #2e2e2e;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        
+        .instructions-container {
+            
+			background-color: #f9f9f9;
+            border: 4px ridge #00bcd4;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 190, 220, 0.4);
+            width: 90%;
+            max-width: 800px;
+            padding: 25px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            overflow: auto;
+        }
+        
+        /* Aggiunta della cornice identica al display della calcolatrice */
+        .title-frame {
+            
+			background-color: #222;
+            color: #00bcd4;
+            border: 4px ridge #00bcd4;
+            font-size: 30px;
+            text-align: center;
+            padding: 15px;
+            border-radius: 6px;
+            width: 100%;
+            margin-bottom: 25px;
+            box-sizing: border-box;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 190, 220, 0.7);
+        }
+        
+        h2 {
+            
+			color: #4CAF50;
+            margin: 20px 0 10px 0;
+            padding-bottom: 5px;
+            border-bottom: 2px solid #00bcd4;
+        }
+        
+        ul {
+            
+			padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        li {
+            
+			margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        
+        .code {
+            
+			font-family: monospace;
+            background-color: #eee;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        .back-btn {
+            
+			display: block;
+            width: 200px;
+            margin: 30px auto 10px;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            text-decoration: none;
+            border: 3px ridge #00bcd4;
+            transition: background-color 0.3s;
+        }
+        
+        .back-btn:hover {
+            
+			background-color: #3d8b40;
+        }
+
+        @media (max-height: 800px) {
+            
+			.instructions-container {
+                
+				margin: 20px auto;
+                max-height: calc(100vh - 40px);
+            }
+        }
+		
+		@media (max-width: 600px) {
+			
+			.instructions-container {
+				
+				width: 95%;
+				padding: 15px;
+			}
+			
+			.title-frame {
+				
+				font-size: 24px;
+				padding: 10px;
+			}
+			
+			h2 {
+				
+				font-size: 18px;
+			}
+			
+			.back-btn {
+				
+				width: 90%;
+				padding: 10px;
+			}
+		}
+		
+    </style>
+	
+</head>
+
+<body>
+
+    <div class="instructions-container">
+        
+		<!-- Cornice aggiunta solo attorno al titolo -->
+        <div class="title-frame">Istruzioni Calcolatrice Scientifica</div>
+        
+        <h2>Operazioni di base</h2>
+        
+		<ul>
+            <li>Utilizza i pulsanti numerici per inserire i numeri</li>
+            <li>Usa i pulsanti <span class="code">+</span>, <span class="code">-</span>, <span class="code">*</span>, <span class="code">/</span> per le operazioni aritmetiche</li>
+            <li>Premi <span class="code">=</span> per calcolare il risultato</li>
+            <li>Usa <span class="code">C</span> per cancellare tutto</li>
+            <li>Premi <span class="code">.</span> per inserire un numero decimale</li>
+        </ul>
+        
+        <h2>Funzioni scientifiche</h2>
+        
+		<ul>
+		
+            <li><strong>Funzioni trigonometriche</strong>: Seleziona dal menu a tendina "Trg" per sin, cos, tan</li>
+            <li><strong>Logaritmi</strong>: 
+                
+				<ul>
+                    <li>Premi <span class="code">log</span> per inserire un logaritmo</li>
+                    <li>Puoi specificare la base (inserisci 'e' per il logaritmo naturale)</li>
+                </ul>
+				
+            </li>
+            
+			<li><strong>Radici</strong>: 
+                
+				<ul>
+                    <li>Premi <span class="code">√</span> per inserire una radice</li>
+                    <li>Specifica l'indice della radice (2 per radice quadrata, 3 per cubica, ecc.)</li>
+                </ul>
+				
+            </li>
+            
+			<li><strong>Potenza</strong>: 
+                
+				<ul>
+                    <li>Premi <span class="code">x^y</span> per inserire un'esponenziazione</li>
+                    <li>Specifica base ed esponente</li>
+                </ul>
+				
+            </li>
+			
+        </ul>
+        
+        <h2>Conversione in frazione</h2>
+        
+		<ul>
+            <li>Premi <span class="code">Converti numToFrac</span> per convertire un numero decimale in frazione</li>
+            <li>Premi di nuovo per tornare al formato decimale</li>
+        </ul>
+        
+        <h2>Tastiera</h2>
+        
+		<ul>
+            <li>Puoi usare la tastiera per inserire numeri e operatori</li>
+            <li><span class="code">Enter</span> o <span class="code">=</span> per calcolare</li>
+            <li><span class="code">Backspace</span> per cancellare un carattere</li>
+            <li><span class="code">c oppure C</span> o <span class="code">Esc</span> per cancellare tutto</li>
+            <li>Scrivi <span class="code">sin</span>, <span class="code">cos</span>, <span class="code">tan</span> per le funzioni trigonometriche</li>
+            <li>Scrivi <span class="code">log</span>, <span class="code">root</span>, <span class="code">pow</span> per le altre funzioni</li>
+            <li>Scrivi <span class="code">ntf</span> per convertire in frazione</li>
+			<li>In questo caso si possono usare le parentesi<span class="code">(</span>o<span class="code">)</span>per i calcoli</li>
+        </ul>
+        
+        <h2>Note importanti</h2>
+        
+		<ul>
+            <li>Le funzioni trigonometriche usano i <strong>radianti</strong></li>
+            <li>In caso di errore, il display mostrerà "Errore"</li>
+            <li>Le parentesi non chiuse vengono chiuse automaticamente al calcolo</li>
+        </ul>
+        
+        <a href="Calcolatrice.html" class="back-btn">Torna alla Calcolatrice</a>
+    </div>
+	
+</body>
+
+</html>

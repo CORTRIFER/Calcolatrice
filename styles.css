@@ -1,0 +1,285 @@
+/* styles.css */
+
+body {
+	
+    font-family: 'Arial', sans-serif;
+    background-color: #2e2e2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.calculator {
+	
+    background-color: #f9f9f9;
+    border: 4px ridge #00bcd4; /* Cornice ciano */
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 190, 220, 0.4); /* Glow leggero ciano */
+    width: 300px; /* Aumenta leggermente la larghezza per un migliore adattamento */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.display {
+	
+    background-color: #222;
+    color: #f1f1f1;
+    border: 6px ridge #00bcd4;
+    font-size: 28px;
+    text-align: right;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+	
+    overflow: auto; /* Aggiunge barra di scorrimento quando necessario */
+	white-space: nowrap; /* evita di andare a capo */
+}
+
+.buttons {
+	
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);  /* 4 colonne per i pulsanti */
+    gap: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.btn {
+	
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;  /* Assicura che i tasti occupino tutta la larghezza delle colonne */
+    box-sizing: border-box;
+	
+	border: 3px ridge #00bcd4;
+}
+
+.btn:hover {
+	
+    background-color: #3d8b40;
+}
+
+button:active {
+	
+    background-color: #3d8b40;
+}
+
+/* Pulsanti per le operazioni (arancioni) */
+.operator {
+	
+    background-color: #FFA500;  /* Arancione */
+    width: 100%;  /* Impostiamo la larghezza al 100% della colonna */
+	font-weight: bold;
+}
+
+.operator:hover {
+	
+    background-color: #e69500; /* Arancione scuro */
+}
+
+/* Classe per i pulsanti scientifici (funzioni come log radice.) */
+.n-to-f {
+	
+    background-color: #00c77b;  /* Blu per le funzioni scientifiche */
+    width: 100%;  /* I pulsanti scientifici si adattano alla larghezza della colonna */
+}
+
+.n-to-f:hover {
+	
+    background-color: #00945b; /* Blu scuro */
+}
+
+/* Pulsante "Converti" */
+.convert {
+	
+    background-color: #8C2DFF;  /* Colore violetto per il tasto Converti */
+    grid-column: span 4;  /* Fai in modo che il pulsante si estenda su tutte le colonne */
+    width: 100%;  /* Impostiamo la larghezza al 100% della colonna */
+}
+
+.convert:hover {
+	
+    background-color: #7A1BB3; /* Colore scuro del tasto "Converti" */
+}
+
+/* Pulsante "C" per cancellare */
+.btn-clear {
+	
+    background-color: #FF4444;
+    color: #fff;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    grid-column: span 4; /* Aggiunto per farlo espandere su tutta la riga */
+    box-sizing: border-box;
+	font-weight: bold;
+	
+	border: 3px ridge #00bcd4;
+}
+
+.btn-clear:hover {
+	
+    background-color: #ff1125; /* Rosso leggermente più scuro per hover */
+}
+
+.btn-special {
+	
+    background-color: #00bcac; /* Verde acqua base */
+    color: white;
+    font-weight: bold;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+	
+	border: 3px ridge #00bcd4;
+}
+
+.btn-special:hover {
+	
+    background-color: #006f6f; /* Verde petrolio scuro */
+}
+
+.select-func {
+	
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 3px ridge #00bcd4;
+    background-color: #e0f7fa;
+    color: #333;
+    box-sizing: border-box;
+}
+
+select.btn {
+	
+    appearance: none;
+    background-color: #00c77b; /* Blu come i pulsanti scientifici */
+    color: white;
+    border: 3px ridge #00bcd4;
+    border-radius: 8px;
+    font-size: 16px;
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+select.btn:hover {
+    
+	background-color: #00945b; /* Blu scuro in hover */
+}
+
+
+.btn.instructions {
+    
+	background-color: #2196F3;
+    grid-column: span 4;
+}
+
+.btn.instructions:hover {
+    
+	background-color: #0b7dda;
+}
+
+
+/* Media queries per dispositivi mobili */
+@media (max-width: 600px) {
+    body {
+        height: auto;
+        min-height: 100vh;
+        padding: 10px;
+        align-items: flex-start;
+    }
+    
+    .calculator {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px;
+    }
+    
+    .display {
+        font-size: 24px;
+        padding: 15px;
+    }
+    
+    .buttons {
+        gap: 8px;
+    }
+    
+    .btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    select.btn {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    /* Riduci il padding per i pulsanti speciali */
+    .btn-special, .n-to-f, .operator {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    /* Pulsante di conversione più compatto */
+    .convert {
+        padding: 10px;
+        font-size: 14px;
+    }
+    
+    /* Pulsante di cancellazione più compatto */
+    .btn-clear {
+        padding: 10px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 400px) {
+    
+	.display {
+        
+		font-size: 20px;
+        padding: 12px;
+    }
+    
+    .btn {
+        
+		padding: 8px;
+        font-size: 12px;
+    }
+    
+    select.btn {
+        
+		padding: 8px;
+        font-size: 12px;
+    }
+    
+    /* Testo più piccolo per i pulsanti speciali */
+    .btn-special, .n-to-f, .operator, .convert, .btn-clear {
+        
+		padding: 8px;
+        font-size: 12px;
+    }
+}
