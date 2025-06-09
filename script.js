@@ -482,3 +482,28 @@ document.addEventListener('keydown', function(event) {
         inputBuffer = '';
     }
 });
+
+
+// Attiva la tastiera numerica su mobile
+display.addEventListener('click', function() {
+    
+	if ('ontouchstart' in window) { // Solo per dispositivi touch
+        
+		this.setAttribute('contenteditable', 'true');
+        this.focus();
+        
+        // Rimuovi contenteditable dopo che la tastiera è apparsa
+        setTimeout(() => {
+            
+			this.removeAttribute('contenteditable');
+			
+        }, 100);
+    }
+});
+
+// Previeni l'input diretto (vogliamo solo la tastiera)
+display.addEventListener('input', function(e) {
+    
+	e.preventDefault();
+    this.innerText = '0';
+});
