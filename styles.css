@@ -280,3 +280,15 @@ select.btn:hover {
         font-size: 14px;
     }
 }
+
+
+#hidden-input {
+    
+	position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    border: none;
+    padding: 0;
+    margin: 0;
+}
