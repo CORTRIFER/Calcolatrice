@@ -17,7 +17,7 @@ Calcolatrice scientifica con funzioni, supporto per tastiera e design responsive
 ### 🎨 Interfaccia Utente
 
 - **Design moderno** con tema scuro e accenti ciano
-- **Layout responsive** per desktop
+- **Layout responsive** per desktop e mobile
 - **Feedback visivo** per operazioni e errori
 - **Menu a tendina** per funzioni trigonometriche
 
