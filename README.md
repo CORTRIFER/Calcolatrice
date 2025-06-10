@@ -1,5 +1,5 @@
 # 🧮 Calcolatrice Scientifica 
-# 🔗Link: https://cortrifer.github.io/Calcolatrice/
+# 🔗 Link: https://cortrifer.github.io/Calcolatrice/
 
 Calcolatrice scientifica con funzioni, supporto per tastiera e design responsive.
 
