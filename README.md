@@ -39,6 +39,8 @@ Calcolatrice scientifica con funzioni, supporto per tastiera e design responsive
 
 ## 🚀 Come Iniziare
 
+### Metodo: Usa Link all'inizio
+
 ### Metodo: Browser Locale
 
 1. Scarica i file del progetto
