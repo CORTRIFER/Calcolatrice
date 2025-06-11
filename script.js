@@ -482,3 +482,41 @@ document.addEventListener('keydown', function(event) {
         inputBuffer = '';
     }
 });
+
+
+// Blocca orientamento portrait su mobile
+function lockPortrait() {
+    
+	if (window.innerWidth < 600) { // Solo per mobile
+        
+		const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+        
+        if (!isPortrait) {
+            
+			document.body.innerHTML = `
+                <div style="
+                    position: fixed; 
+                    top: 0; 
+                    left: 0; 
+                    width: 100%; 
+                    height: 100%; 
+                    background-color: #2e2e2e; 
+                    color: white; 
+                    display: flex; 
+                    justify-content: center; 
+                    align-items: center; 
+                    font-size: 24px; 
+                    text-align: center;
+                    z-index: 9999;
+                ">
+                    Ruota il dispositivo in verticale per utilizzare la calcolatrice
+                </div>
+            `;
+            window.screen.orientation.lock('portrait').catch(e => console.log(e));
+        }
+    }
+}
+
+// Esegui al caricamento e al ridimensionamento
+window.addEventListener('load', lockPortrait);
+window.addEventListener('resize', lockPortrait);
