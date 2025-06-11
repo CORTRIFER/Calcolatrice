@@ -289,14 +289,3 @@ select.btn:hover {
         font-size: 14px;
     }
 }
-
-
-/* Blocca l'orientamento in portrait */
-@media (max-width: 600px) and (orientation: landscape) {
-  
-	body {
-	  
-		overflow: hidden;
-		touch-action: none;
-	}
-}
